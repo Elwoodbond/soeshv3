@@ -43,4 +43,4 @@ export async function updateUser({
     } catch (error: any) {
         throw new Error('Failed to create/update user: ${error.message}');
     }
-}
+};
