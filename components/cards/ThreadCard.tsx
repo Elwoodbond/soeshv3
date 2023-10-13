@@ -29,7 +29,7 @@ interface Props {
 }
 
 const ThreadCard = ({
-     id, currentUserId, parentId, content, author, community, createdAt, comments 
+     id, currentUserId, parentId, content, author, community, createdAt, comments, isComment 
     } : Props)=> {
         return (
             <article className="flex w-full flex-col rounded-xl bg-dark-2 p-7">
@@ -69,7 +69,12 @@ const ThreadCard = ({
                                     height={24} className="cursor-pointer object-contain"/>
                                 </div>
 
+                                {isComment && comments.length > 0 && (
 
+                                  <Link href={'/thread/${id}'}>
+                                    <p className="mt-1 text-subtle-medium text-gray-1">{comments.length} replies</p>
+                                  </Link>
+                                )}
 
                             </div>
                         </div>
