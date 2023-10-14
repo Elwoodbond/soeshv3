@@ -25,7 +25,7 @@ export async function createThread({text, author, communityId, path }: Params) {
         //  Update user model
         await User.findByIdAndUpdate(author, {
             $push: { threads: createdThread._id },
-        })
+        });
     
         revalidatePath(path)
     } catch (error: any) {
@@ -61,14 +61,14 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
     return { posts, isNext };
 }
 
-export async function fetchThreadById(id: string) {
+export async function fetchThreadById(threadId: string) {
     connectToDB();
   
     try {
 
 
       //community 
-      const thread = await Thread.findById(id)
+      const thread = await Thread.findById(threadId)
         .populate({
           path: "author",
           model: User,

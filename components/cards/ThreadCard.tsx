@@ -24,7 +24,7 @@ interface Props {
         author: {
         image: string;
     }
-    } []
+    }[]
     isComment?: boolean;
 }
 
@@ -67,7 +67,7 @@ const ThreadCard = ({
                                 <div className="flex gap-3.5">
                                     <Image src="/assets/heart-gray.svg" alt="heart" width={24}
                                     height={24} className="cursor-pointer object-contain"/>
-                                    <Link href={'/thread/${author.id}'}>
+                                    <Link href={`/thread/${id}`}>
                                     <Image src="/assets/reply.svg" alt="reply" width={24}
                                     height={24} className="cursor-pointer object-contain"/>
                                     </Link>
@@ -78,7 +78,7 @@ const ThreadCard = ({
                                 </div> 
 
                                 {isComment && comments.length > 0 && (
-                                  <Link href={'/thread/${author.id}'}>
+                                  <Link href={`/thread/${id}`}>
                                     <p className="mt-1 text-subtle-medium text-gray-1">{comments.length} replies</p>
                                   </Link>
                                 )}
