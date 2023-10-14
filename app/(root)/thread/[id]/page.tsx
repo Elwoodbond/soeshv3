@@ -6,7 +6,7 @@ import { fetchThreadById } from "@/lib/actions/thread.actions";
 import Comment from "@/components/forms/Comment";
 
 
-const Page = async ({ params }: { params: { id: string }}) => {
+const page = async ({ params }: { params: { id: string }}) => {
     if(!params.id) return null;
     const user = await currentUser();
     if(!user) return null;
@@ -19,9 +19,8 @@ const Page = async ({ params }: { params: { id: string }}) => {
     <section className="relative">
     <div>           
         <ThreadCard
-            key={thread._id}
             id={thread._id}
-            currentUserId={user?.id || ''}
+            currentUserId={user?.id}
             parentId={thread.parentId}
             content={thread.text}
             author={thread.author}
@@ -38,4 +37,4 @@ const Page = async ({ params }: { params: { id: string }}) => {
     )
 }
 
-export default Page;
+export default page;

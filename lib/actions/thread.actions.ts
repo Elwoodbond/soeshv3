@@ -73,15 +73,14 @@ export async function fetchThreadById(id: string) {
           path: "author",
           model: User,
           select: "_id id name image",
-        }) // Populate the author field with _id and username
-         // Populate the community field with _id and name
-        .populate({
-          path: "children", // Populate the children field
+        }) 
+        .populate ({
+          path: "children",
           populate: [
             {
-              path: "author", // Populate the author field within children
+              path: "author", 
               model: User,
-              select: "_id id name parentId image", // Select only _id and username fields of the author
+              select: "_id id name parentId image" 
             },
             {
               path: "children", // Populate the children field within children
