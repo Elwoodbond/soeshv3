@@ -25,12 +25,12 @@ interface Props {
         image: string;
     }
     } []
-    isComment: boolean;
+    isComment?: boolean;
 }
 
 const ThreadCard = ({
-     id, currentUserId, parentId, content, author, community, createdAt, comments, isComment 
-    } : Props)=> {
+     id, currentUserId, parentId, content, author, community, createdAt, comments, isComment, 
+    } : Props) => {
         return (
             <article className="flex w-full flex-col rounded-xl bg-dark-2 p-7">
                 <div className="flex items-start justify-between">
@@ -67,10 +67,9 @@ const ThreadCard = ({
                                     height={24} className="cursor-pointer object-contain"/>
                                     <Image src="/assets/share.svg" alt="share" width={24}
                                     height={24} className="cursor-pointer object-contain"/>
-                                </div>
+                                </div> 
 
                                 {isComment && comments.length > 0 && (
-
                                   <Link href={'/thread/${id}'}>
                                     <p className="mt-1 text-subtle-medium text-gray-1">{comments.length} replies</p>
                                   </Link>
