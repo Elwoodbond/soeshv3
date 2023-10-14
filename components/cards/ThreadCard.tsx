@@ -15,9 +15,9 @@ interface Props {
         id: string;
     },
     community: {
+        id: string;
         name: string;
         image: string;
-        id: string;
     } | null;
     createdAt: string;
     comments: {
@@ -29,7 +29,15 @@ interface Props {
 }
 
 const ThreadCard = ({
-     id, currentUserId, parentId, content, author, community, createdAt, comments, isComment, 
+     id, 
+     currentUserId, 
+     parentId, 
+     content, 
+     author, 
+     community, 
+     createdAt, 
+     comments, 
+     isComment, 
     } : Props) => {
         return (
             <article className="flex w-full flex-col rounded-xl bg-dark-2 p-7">
@@ -59,7 +67,7 @@ const ThreadCard = ({
                                 <div className="flex gap-3.5">
                                     <Image src="/assets/heart-gray.svg" alt="heart" width={24}
                                     height={24} className="cursor-pointer object-contain"/>
-                                    <Link href={'/thread/${id}'}>
+                                    <Link href={'/thread/${author.id}'}>
                                     <Image src="/assets/reply.svg" alt="reply" width={24}
                                     height={24} className="cursor-pointer object-contain"/>
                                     </Link>
@@ -70,7 +78,7 @@ const ThreadCard = ({
                                 </div> 
 
                                 {isComment && comments.length > 0 && (
-                                  <Link href={'/thread/${id}'}>
+                                  <Link href={'/thread/${author.id}'}>
                                     <p className="mt-1 text-subtle-medium text-gray-1">{comments.length} replies</p>
                                   </Link>
                                 )}
